@@ -1,2 +1,6 @@
-5 5
-frames
+change=2
+frameRate=5
+videoPath=D:\downloads\demonSlayer.mp4
+autoStart=true
+checkConfig=false
+quality=5
