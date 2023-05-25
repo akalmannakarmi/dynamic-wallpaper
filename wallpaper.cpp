@@ -161,14 +161,13 @@ void Wallpaper::changeWallpaper(){
         auto frameStartTime = std::chrono::steady_clock::now();
 
         // Set the desktop wallpaper
-        if (threads < maxThreads){
-            threads++;
-            std::thread change(&Wallpaper::changeWp, this, std::ref(threads), std::cref(imagePaths[i]));
-            change.detach();
-        } else {
+        while(threads>=maxThreads){
             std::cerr << "Threads full" << std::endl;
+            Sleep(frameDurationMilliseconds);
         }
-
+        threads++;
+        std::thread changeTh(&Wallpaper::changeWp, this, std::ref(threads), std::cref(imagePaths[i]));
+        changeTh.detach();
         if (checkConfig && fmod(i/change/(double)frameRate, 10.0) == 0){
             init();
         }

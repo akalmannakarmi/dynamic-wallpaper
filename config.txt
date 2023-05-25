@@ -20,4 +20,4 @@ quality=5
 autoStart=true
 
 # How many threads can the program use. values >=4 [higher is better]
-maxThreads=16
+maxThreads=12
