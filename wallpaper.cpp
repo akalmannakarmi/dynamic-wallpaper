@@ -86,6 +86,8 @@ bool Wallpaper::loadConfig() {
             checkConfig = (value == "true");
         } else if (key == "quality") {
             quality = std::stoi(value)%32;
+        } else if (key == "maxThreads") {
+            maxThreads = std::stoi(value);
         }
     }
 
@@ -159,7 +161,7 @@ void Wallpaper::changeWallpaper(){
         auto frameStartTime = std::chrono::steady_clock::now();
 
         // Set the desktop wallpaper
-        if (threads < 8){
+        if (threads < maxThreads){
             threads++;
             std::thread change(&Wallpaper::changeWp, this, std::ref(threads), std::cref(imagePaths[i]));
             change.detach();
@@ -167,7 +169,7 @@ void Wallpaper::changeWallpaper(){
             std::cerr << "Threads full" << std::endl;
         }
 
-        if (checkConfig && fmod(i/change/(double)frameRate, 20.0) == 0){
+        if (checkConfig && fmod(i/change/(double)frameRate, 10.0) == 0){
             init();
         }
         i += change;

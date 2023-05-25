@@ -1,6 +1,23 @@
-change=2
-frameRate=5
-videoPath=D:\downloads\demonSlayer.mp4
-autoStart=true
+### Change values here ###
+# changes take effect every 10s if checkConfig was set to true before hand
+# else changes take effect on restart of program
+
+# If checkConfig is enabled the program checks config file for changes every 10s. values: true / false
 checkConfig=false
+
+# how many frames to skip every frame draw. values 1-10
+change=1
+
+# how many frames to draw persecond. values >=1
+frameRate=20
+
+# path to the video you want to set as background
+videoPath=demonSlayer.mp4
+# quality of the image only works when setting the video. values:1-31 [lower is better]
 quality=5
+
+# If autoStart is set to true it will add the program to startup. values: true / false
+autoStart=true
+
+# How many threads can the program use. values >=4 [higher is better]
+maxThreads=16

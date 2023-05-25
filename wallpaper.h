@@ -11,6 +11,7 @@ class Wallpaper{
     int change = 1;
     int frameRate = 5;
     int quality = 5;
+    int maxThreads = 8;
     std::string videoPath;
     std::wstring imagesPath;
     int frameDurationMilliseconds = 1000 / frameRate;
